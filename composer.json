@@ -1,0 +1,21 @@
+{
+  "name": "steodec/gamecodingschool.dev",
+  "description": "Website for learn code",
+  "type": "project",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Steodec\\GamecodingschoolDev\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Steodec",
+      "email": "paul.tedesco@live.fr"
+    }
+  ],
+  "require": {
+    "haydenpierce/class-finder": "0.4.3",
+    "josegonzalez/dotenv": "^3.2"
+  }
+}
