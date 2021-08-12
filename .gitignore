@@ -1,0 +1,9 @@
+### Composer ###
+composer.phar
+/vendor/
+
+### dotenv ###
+.env
+
+### PhpStorm ###
+/.idea/
