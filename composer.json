@@ -1,21 +1,24 @@
 {
   "name": "steodec/gamecodingschool.dev",
-  "description": "Website for learn code",
-  "type": "project",
-  "license": "MIT",
-  "autoload": {
-    "psr-4": {
-      "Steodec\\GamecodingschoolDev\\": "src/"
-    }
-  },
   "authors": [
     {
-      "name": "Steodec",
+      "name": "Paul Tedesco",
       "email": "paul.tedesco@live.fr"
     }
   ],
   "require": {
-    "haydenpierce/class-finder": "0.4.3",
-    "josegonzalez/dotenv": "^3.2"
-  }
+    "vlucas/phpdotenv": "^5.3",
+    "steodec/router": "^1.2.1",
+    "twig/twig": "^3.3",
+    "twig/string-extra": "^3.3"
+  },
+  "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "psr-4": {
+      "Steodec\\": "src/"
+    }
+  },
+  "description": ""
 }

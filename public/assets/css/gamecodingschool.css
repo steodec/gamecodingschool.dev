@@ -1,0 +1,110 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../font/Roboto-Black.ttf") format("ttf"),
+    url("../font/Roboto-BlackItalic.ttf") format("ttf"),
+    url("../font/Roboto-Bold.ttf") format("ttf"),
+    url("../font/Roboto-BoldItalic.ttf") format("ttf"),
+    url("../font/Roboto-Italic.ttf") format("ttf"),
+    url("../font/Roboto-Light.ttf") format("ttf"),
+    url("../font/Roboto-LightItalic.ttf") format("ttf"),
+    url("../font/Roboto-Medium.ttf") format("ttf"),
+    url("../font/Roboto-MediumItalic.ttf") format("ttf"),
+    url("../font/Roboto-Regular.ttf") format("ttf"),
+    url("../font/Roboto-Thin.ttf") format("ttf"),
+    url("../font/Roboto-ThinItalic.ttf") format("ttf")
+
+}
+
+:root {
+    --primary: #264653;
+    --success: #2A9D8F;
+    --warning: #F4A261;
+    --danger: #E76F51;
+    --secondary: #E9C46A;
+    --light: #f5f5f5;
+    --dark: #0e0e0e;
+}
+
+html body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+    background-color: transparent;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.navbar-left {
+    grid-area: 1 / 1 / 2 / 5;
+}
+
+.navbar-right {
+    grid-area: 1 / 5 / 2 / 7;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem;
+    justify-content: space-evenly;
+}
+
+.navbar-nav > .nav-item {
+    list-style: none;
+    margin: 0.5rem;
+}
+
+.navbar-nav > .nav-item > .nav-link {
+    text-decoration: none;
+    color: var(--dark);
+    text-transform: uppercase;
+}
+
+.navbar-nav > .nav-item > .nav-link:hover {
+    border-bottom: solid 1px var(--dark);
+}
+
+.btn {
+    background-color: var(--light);
+    color: var(--dark);
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    max-height: 18px;
+    font-size: 12pt;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: var(--light);
+}
+
+.btn-warning {
+    background-color: var(--warning);
+    color: var(--light);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--light);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: var(--dark);
+}
