@@ -10,6 +10,7 @@ class Users
 {
     private static function formView()
     {
+        Views::generatedInputs(\Steodec\Entity\Users::class);
         Views::view("Users/form.html.twig", "Formulaire");
     }
 

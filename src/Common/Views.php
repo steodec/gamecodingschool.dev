@@ -3,11 +3,14 @@
 namespace Steodec\Common;
 
 use Twig\TwigFilter;
+use ReflectionClass;
 use Twig\Environment;
 use Twig\TwigFunction;
+use ReflectionProperty;
 use ReflectionException;
 use Twig\Error\LoaderError;
 use Twig\Error\SyntaxError;
+use Steodec\Attribute\Form;
 use Twig\Error\RuntimeError;
 use Steodec\Router\RouterConfig;
 use Twig\Loader\FilesystemLoader;
@@ -75,4 +78,34 @@ class Views
         }
         return FALSE;
     }
+
+    /**
+     * @param object|class-string $Object
+     *
+     * @throws ReflectionException
+     */
+    public static function generatedInputs(object|string $Object)
+    {
+        $class = new ReflectionClass($Object);
+        $routeArray = [];
+        foreach ($class->getProperties() as $property):
+            $inputs = $property->getAttributes(Form::class);
+            if (empty($inputs)) continue;
+            foreach ($inputs as $input):
+                $input = $input->newInstance();
+                if (!$input->is_hidden()):
+                    $label = ucfirst($input->get_name());
+                    echo "<label for='{$input->get_name()}'>{$label}</label>";
+                    echo "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_name()}'/>";
+                    if ($input->is_checked()):
+                        $label = ucfirst("repeat " . $input->get_name());
+                        echo "<label for='{$input->get_name()}'>{$label}</label>";
+                        echo "<input  name='{$input->get_name()}' type='{$input->get_type()}'/>";
+                    endif;
+                endif;
+            endforeach;
+        endforeach;
+
+    }
+
 }

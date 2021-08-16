@@ -1,4 +1,15 @@
 {% extends "Components/layout.html.twig" %}
-
+{% from "Forms/form.html.twig" import formulaire as form %}
 {% block container %}
+    <div class="card">
+        <div class="card-header">
+            <h2>Inscription</h2>
+        </div>
+        <div class="card-body">
+            {{ form("/user", "POST", [], "success") }}
+        </div>
+        <div class="card-footer">
+
+        </div>
+    </div>
 {% endblock %}
