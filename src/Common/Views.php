@@ -84,27 +84,34 @@ class Views
      *
      * @throws ReflectionException
      */
-    public static function generatedInputs(object|string $Object)
+    public static function generatedInputs(object|string $Object, string $form_name)
     {
         $class = new ReflectionClass($Object);
-        $routeArray = [];
+        $inputsArray = [];
         foreach ($class->getProperties() as $property):
             $inputs = $property->getAttributes(Form::class);
             if (empty($inputs)) continue;
             foreach ($inputs as $input):
                 $input = $input->newInstance();
+                if ($input->get_form_name() != $form_name) continue;
                 if (!$input->is_hidden()):
                     $label = ucfirst($input->get_name());
-                    echo "<label for='{$input->get_name()}'>{$label}</label>";
-                    echo "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_name()}'/>";
+                    array_push($inputsArray, [
+                        "<label for='{$input->get_name()}'>{$label}</label>",
+                        "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_name()}' class='inputs'/>"
+                    ]);
                     if ($input->is_checked()):
                         $label = ucfirst("repeat " . $input->get_name());
-                        echo "<label for='{$input->get_name()}'>{$label}</label>";
-                        echo "<input  name='{$input->get_name()}' type='{$input->get_type()}'/>";
+                        array_push($inputsArray, [
+                            "<label for='{$input->get_name()}'>{$label}</label>",
+                            "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='repeat_{$input->get_name()}' class='inputs'/>"
+                        ]);
                     endif;
                 endif;
             endforeach;
         endforeach;
+
+        return $inputsArray;
 
     }
 

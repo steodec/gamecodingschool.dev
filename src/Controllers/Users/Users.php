@@ -10,8 +10,9 @@ class Users
 {
     private static function formView()
     {
-        Views::generatedInputs(\Steodec\Entity\Users::class);
-        Views::view("Users/form.html.twig", "Formulaire");
+        $register_inputs = Views::generatedInputs(\Steodec\Entity\Users::class, "register_form");
+        $login_inputs = Views::generatedInputs(\Steodec\Entity\Users::class, "login_form");
+        Views::view("Users/form.html.twig", "Formulaire", params: array("register_inputs" => $register_inputs, "login_inputs" => $login_inputs));
     }
 
     private static function myProfil()

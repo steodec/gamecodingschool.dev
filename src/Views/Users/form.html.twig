@@ -1,15 +1,35 @@
 {% extends "Components/layout.html.twig" %}
-{% from "Forms/form.html.twig" import formulaire as form %}
+{% from "Components/Forms/form.html.twig" import formulaire as form %}
 {% block container %}
-    <div class="card">
-        <div class="card-header">
-            <h2>Inscription</h2>
-        </div>
-        <div class="card-body">
-            {{ form("/user", "POST", [], "success") }}
-        </div>
-        <div class="card-footer">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Inscription</h2>
+                </div>
+                <div class="card-body">
+                    {{ form("/user", "POST", register_inputs, "success") }}
+                </div>
+                <div class="card-footer">
 
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Connexion</h2>
+                </div>
+                <div class="card-body">
+                    {{ form("/user", "POST", login_inputs, "success") }}
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ js }}/form.js"></script>
 {% endblock %}

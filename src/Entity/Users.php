@@ -9,13 +9,15 @@ class Users
 {
     private string $id;
 
-    #[Form("email", FormConstant::TYPE_EMAIL, FALSE, TRUE)]
+    #[Form("register_form", "email", FormConstant::TYPE_EMAIL, FALSE, TRUE)]
+    #[Form("login_form", "email", FormConstant::TYPE_EMAIL)]
     public string $email;
 
-    #[Form("username", FormConstant::TYPE_TEXT, FALSE)]
+    #[Form("register_form","username", FormConstant::TYPE_TEXT, FALSE)]
     public string $username;
 
-    #[Form("password", FormConstant::TYPE_PASSWORD, FALSE, TRUE)]
+    #[Form("register_form", "password", FormConstant::TYPE_PASSWORD, FALSE, TRUE)]
+    #[Form("login_form", "password", FormConstant::TYPE_PASSWORD)]
     public string $password;
 
     public ?array $roles = ["ROLE_MEMBER"];

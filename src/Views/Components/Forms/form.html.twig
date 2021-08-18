@@ -1,7 +1,11 @@
 {% macro formulaire(action = "", method = "post", inputs = [], validateColor = "primary") %}
     <form action="{{ action }}" method="{{ method }}">
-        {% for inputs in input %}
-            {{ input }}
+        {% for input in inputs %}
+            <div class="form-group">
+                {% for labelAndInput in input %}
+                    {{ labelAndInput|raw }}
+                {% endfor %}
+            </div>
         {% endfor %}
         <input class="btn btn-{{ validateColor }}" type="submit">
     </form>

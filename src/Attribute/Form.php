@@ -4,13 +4,14 @@ namespace Steodec\Attribute;
 
 use Attribute;
 
-#[Attribute(Attribute::TARGET_PROPERTY)]
+#[Attribute(Attribute::TARGET_PROPERTY | Attribute::IS_REPEATABLE)]
 class Form
 {
-    public function __construct(public string $name,
+    public function __construct(public string $form_name,
+                                public string $name,
                                 public string $type,
-                                public bool   $hidden = FALSE,
-                                public bool   $checked = FALSE)
+                                public bool $hidden = FALSE,
+                                public bool $checked = FALSE)
     {
     }
 
@@ -44,6 +45,14 @@ class Form
     public function is_checked(): bool
     {
         return $this->checked;
+    }
+
+    /**
+     * @return string
+     */
+    public function get_form_name(): string
+    {
+        return $this->form_name;
     }
 
 
