@@ -7,20 +7,20 @@ use Steodec\Common\FormConstant;
 
 class Users
 {
+    const TABLE_NAME = "users";
     private string $id;
-
     #[Form("register_form", "email", FormConstant::TYPE_EMAIL, FALSE, TRUE)]
     #[Form("login_form", "email", FormConstant::TYPE_EMAIL)]
     public string $email;
 
-    #[Form("register_form","username", FormConstant::TYPE_TEXT, FALSE)]
+    #[Form("register_form", "username", FormConstant::TYPE_TEXT, FALSE)]
     public string $username;
 
     #[Form("register_form", "password", FormConstant::TYPE_PASSWORD, FALSE, TRUE)]
     #[Form("login_form", "password", FormConstant::TYPE_PASSWORD)]
     public string $password;
 
-    public ?array $roles = ["ROLE_MEMBER"];
+    public ?array $roles;
 
     /**
      * @param string $id

@@ -6,8 +6,10 @@ function isEmail(email) {
 $(function () {
     $(document).on('keyup', 'input[type="email"]', function () {
         if (isEmail($(this).val())) {
+            $($($(this).parent()).parent()).last().find("input:last").prop("disabled", false)
             $(this).attr("class", 'input-success');
         } else {
+            $($($(this).parent()).parent()).last().find("input:last").prop("disabled", true)
             $(this).attr("class", 'input-error');
         }
     });

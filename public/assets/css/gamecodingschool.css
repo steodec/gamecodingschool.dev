@@ -94,6 +94,13 @@ input[type=submit] {
     cursor: pointer;
 }
 
+input[type=submit]:disabled {
+    text-decoration: none;
+    border: none;
+    appearance: none;
+    cursor: not-allowed !important;
+}
+
 .btn {
     background-color: var(--light);
     color: var(--dark);

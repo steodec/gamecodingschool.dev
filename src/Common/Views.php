@@ -97,14 +97,14 @@ class Views
                 if (!$input->is_hidden()):
                     $label = ucfirst($input->get_name());
                     array_push($inputsArray, [
-                        "<label for='{$input->get_name()}'>{$label}</label>",
-                        "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_name()}' class='inputs'/>"
+                        "<label for='{$input->get_form_name()}_{$input->get_name()}'>{$label}</label>",
+                        "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_form_name()}_{$input->get_name()}' class='inputs'/>"
                     ]);
                     if ($input->is_checked()):
                         $label = ucfirst("repeat " . $input->get_name());
                         array_push($inputsArray, [
-                            "<label for='{$input->get_name()}'>{$label}</label>",
-                            "<input  name='{$input->get_name()}' type='{$input->get_type()}' id='repeat_{$input->get_name()}' class='inputs'/>"
+                            "<label for='{$input->get_form_name()}_repeat_{$input->get_name()}'>{$label}</label>",
+                            "<input  name='repeat_{$input->get_name()}' type='{$input->get_type()}' id='{$input->get_form_name()}_repeat_{$input->get_name()}' class='inputs'/>"
                         ]);
                     endif;
                 endif;
@@ -112,7 +112,12 @@ class Views
         endforeach;
 
         return $inputsArray;
+    }
 
+    public static function checkRepeat($key, $array)
+    {
+        $checkValue = explode("_", $key)[1];
+        return ($array[$checkValue] == $array[$key]);
     }
 
 }
